@@ -6,9 +6,14 @@ export class CustomerController {
     public router: Router = Router();
     constructor() {
         this.router.get('/', this.getCustomer);
+        this.router.get('/:id', this.getCustomerById);
     }
     public getCustomer(request: Request, response: Response, next: NextFunction) {
         return Api.ok(request, response, 'Customer info');
+    }
+
+    public getCustomerById(request: Request, response: Response, next: NextFunction) {
+        return Api.ok(request, response, request.params['id']);
 
     }
 }

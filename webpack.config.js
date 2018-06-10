@@ -10,7 +10,7 @@ module.exports = {
     externals: [nodeExternals()],
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: 'ngx-api.js',
+        filename: 'ejs-api.js',
     },
     plugins: [
         new CopyWebpackPlugin([

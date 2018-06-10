@@ -42,13 +42,13 @@ function jsonResponse(res, body, options) {
 }
 
 const Api = {
-    ok: function (req, res, data) {
+    ok: function(req, res, data) {
         jsonResponse(res, data, {
             status: Status.OK
         });
     },
 
-    badRequest: function (req, res, errors) {
+    badRequest: function(req, res, errors) {
         errors = Array.isArray(errors) ? errors : [errors];
 
         let body = {
@@ -61,7 +61,7 @@ const Api = {
         });
     },
 
-    unauthorized: function (req, res, error) {
+    unauthorized: function(req, res, error) {
         let body = {
             message: statusMessage(Status.UNAUTHORIZED),
             error: error
@@ -72,7 +72,7 @@ const Api = {
         });
     },
 
-    forbidden: function (req, res) {
+    forbidden: function(req, res) {
         let body = {
             message: statusMessage(Status.FORBIDDEN)
         };
@@ -81,7 +81,7 @@ const Api = {
             status: Status.FORBIDDEN
         });
     },
-    notFound: function (req, res) {
+    notFound: function(req, res) {
         let body = {
             message: statusMessage(Status.NOT_FOUND)
         };
@@ -91,7 +91,7 @@ const Api = {
         });
     },
 
-    unsupportedAction: function (req, res) {
+    unsupportedAction: function(req, res) {
         let body = {
             message: statusMessage(Status.UNSUPPORTED_ACTION)
         };
@@ -101,7 +101,7 @@ const Api = {
         });
     },
 
-    invalid: function (req, res, errors) {
+    invalid: function(req, res, errors) {
         errors = Array.isArray(errors) ? errors : [errors];
 
         let body = {
@@ -113,7 +113,7 @@ const Api = {
             status: Status.VALIDATION_FAILED
         });
     },
-    serverError: function (req, res, error) {
+    serverError: function(req, res, error) {
         if (error instanceof Error) {
             error = {
                 message: error.message,
@@ -130,12 +130,12 @@ const Api = {
         });
     },
 
-    requireParams: function (req, res, params, next) {
+    requireParams: function(req, res, params, next) {
         let missing = [];
 
         params = Array.isArray(params) ? params : [params];
 
-        params.forEach(function (param) {
+        params.forEach(function(param) {
             if (!(req.body && _hasOwnProperty.call(req.body, param)) && !(req.params && _hasOwnProperty.call(req.params, param))
                 && !_hasOwnProperty.call(req.query, param)) {
                 missing.push('Missing required parameter: ' + param);
@@ -148,18 +148,18 @@ const Api = {
             next();
         }
     },
-    created: function (req, res, data) {
+    created: function(req, res, data) {
         jsonResponse(res, data, {
             status: Status.OK
         });
     },
 
-    requireHeaders: function (req, res, headers, next) {
+    requireHeaders: function(req, res, headers, next) {
         let missing = [];
 
         headers = Array.isArray(headers) ? headers : [headers];
 
-        headers.forEach(function (header) {
+        headers.forEach(function(header) {
             if (!(req.headers && _hasOwnProperty.call(req.headers, header))) {
                 missing.push('Missing required header parameter: ' + header);
             }

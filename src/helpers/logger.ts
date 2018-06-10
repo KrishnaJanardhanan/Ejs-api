@@ -5,15 +5,11 @@ const path = require('path');
 const fs = require('fs');
 const DailyRotateFile = require('winston-daily-rotate-file');
 
-enum LoggerType {
-    RequestLogger, ErrorLogger
-}
-
 export class Logger {
 
     private static logger;
     private static _errorLogger;
-    private static logDirectory = path.join(process.cwd(), 'pumalogs');
+    private static logDirectory = path.join(process.cwd(), 'logs');
 
     private static CreateLogFolderIfNotExists() {
         // ensure log directory exists
@@ -26,7 +22,7 @@ export class Logger {
         this.logger = new winston.Logger({
             transports: [
                 new DailyRotateFile({
-                    filename: path.join(Logger.logDirectory, "puma-%DATE%.log"),
+                    filename: path.join(Logger.logDirectory, "%DATE%.log"),
                     datePattern: 'YYYY-MM-DD',
                     prepend: true,
                     localTime: true,

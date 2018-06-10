@@ -10,7 +10,7 @@ import { ApiRouting } from './api.routing';
 import { Api } from './helpers/api';
 import { AppSetting } from './config/AppSetting';
 
-export class WebApi {
+export class ExpressApi {
     public app: express.Express;
     private router: express.Router;
 
@@ -110,4 +110,3 @@ export class WebApi {
         }
     }
 }
-
