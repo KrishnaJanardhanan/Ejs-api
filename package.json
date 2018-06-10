@@ -9,9 +9,9 @@
         "lint": "npm run tslint \"src/**/*.ts\"",
         "tslint": "tslint",
         "pree2e": "webdriver-manager update",
-        "build:prod": "npm run clean:dest && webpack --mode=production",
-        "build:dev": "npm run clean:dest && webpack --mode=development",
-        "clean:dest": "rimraf dist",
+        "build:prod": "npm run clean:dist && webpack --mode=production",
+        "build:dev": "npm run clean:dist && webpack --mode=development",
+        "clean:dist": "rimraf dist",
         "clean:build": "rimraf build"
     },
     "keywords": [
