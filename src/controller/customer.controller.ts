@@ -8,7 +8,7 @@ export class CustomerController {
         this.router.get('/', this.getCustomer);
     }
     public getCustomer(request: Request, response: Response, next: NextFunction) {
-        return Api.ok(request, response, 'Customer');
+        return Api.ok(request, response, 'Customer info');
 
     }
 }
